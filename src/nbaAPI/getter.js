@@ -1,7 +1,7 @@
 async function getter(url) {
   const res = await fetch(url);
 
-  if (res.status != 200) {
+  if (res.status !== 200) {
     return [];
   }
 
@@ -22,13 +22,15 @@ async function getTeamPointsPerGame(id) {
   };
 }
 
-async function getTeamsInfo() {
+async function getTeamsPPG() {
   let teamsInfo = [];
 
-  for (i = 1; i <= 30; i++) {
+  for (let i = 1; i <= 30; i++) {
     const teamInfo = await getTeamPointsPerGame(i);
     teamsInfo.push(teamInfo);
   }
 
   return teamsInfo.sort((a, b) => a.ppg - b.ppg);
 }
+
+export default getTeamsPPG;

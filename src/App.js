@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+
+import getTeamsPPG from './nbaAPI/getter.js'
+
+function getLogoStyle(positioning) {
+  const top = `top: ${480 - positioning * 20}px;`
+  const left = `left: ${640 - positioning * 20}px;`
+
+  return top+left;
+}
+
+function Logos() {
+  return getTeamsPPG.map((team) => {
+    return <img src={team.logo} style={getLogoStyle(team.id)}></img>
+  })
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Logos />
     </div>
   );
 }
