@@ -9,26 +9,26 @@ async function getter(url) {
   return resJson;
 }
 
-async function getTeamInfo(id) {
+async function getTeamPointsPerGame(id) {
   const teamJson = await getter(
     'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams' +
       `/${id}`
   );
   return {
     logo: teamJson.team.logos[0].href,
-    pointAgainst: Number(teamJson.team.record.items[0].stats[2].value.toFixed(1)),
-    pointScored: Number(teamJson.team.record.items[0].stats[3].value.toFixed(1))
+    ppg: Number(
+      teamJson.team.record.items[0].stats[3].value.toFixed(1)
+    ),
   };
 }
 
-function getTeamsInfo() {
-  let teamsInfo = []
+async function getTeamsInfo() {
+  let teamsInfo = [];
 
-  for (i = 1; i <= process.env.MAX_TEAM_INFO; i++) {
-    getTeamInfo(i)
-    .then(teamInfo => teamsInfo.push(teamInfo))
-    .catch(err => {console.log(err); return []})
+  for (i = 1; i <= 30; i++) {
+    const teamInfo = await getTeamPointsPerGame(i);
+    teamsInfo.push(teamInfo);
   }
 
-  return teamsInfo.sort((a, b) => { a.pointScore/a.pointAgainst > b.pointScore/b.pointAgainst})
+  return teamsInfo.sort((a, b) => a.ppg - b.ppg);
 }
