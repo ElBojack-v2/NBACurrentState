@@ -7,7 +7,11 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {window.innerWidth < 768 && window.innerHeight < 1020 ?
+    "Va te faire avec ton pc de merde"
+    :
     <App />
+    }
   </React.StrictMode>
 );
 
