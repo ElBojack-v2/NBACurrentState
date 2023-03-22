@@ -15,7 +15,9 @@ async function getTeamPointsPerGame(id) {
       `/${id}`
   );
   return {
+    id: teamJson.team.id,
     logo: teamJson.team.logos[0].href,
+    name: teamJson.team.name,
     ppg: Number(
       teamJson.team.record.items[0].stats[3].value.toFixed(1)
     ),
