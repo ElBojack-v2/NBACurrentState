@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import NbaRankings from './graph/NbaRankings';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -10,7 +11,7 @@ root.render(
     {window.innerWidth < 768 && window.innerHeight < 1020 ?
     "Va te faire avec ton pc de merde"
     :
-    <App />
+    <NbaRankings />
     }
   </React.StrictMode>
 );
