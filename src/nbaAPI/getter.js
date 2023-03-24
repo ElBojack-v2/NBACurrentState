@@ -21,6 +21,9 @@ async function getTeamPointsPerGame(id) {
     ppg: Number(
       teamJson.team.record.items[0].stats[3].value.toFixed(1)
     ),
+    ppa: Number(
+      teamJson.team.record.items[0].stats[2].value.toFixed(1)
+    ),
   };
 }
 

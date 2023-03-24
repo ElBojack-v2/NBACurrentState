@@ -18,9 +18,9 @@ function App() {
     return (
       <div className="App">
         {teams.map(team => (
-          <div>
-            <img key={team.id} style={{width:'20px', height:'20px'}} src={team.logo} alt={team.name} />
-          </div>
+          <span>
+            <img key={team.id} style={{width:'25px', height:'25px'}} src={team.logo} alt={team.name} />
+          </span>
         ))}
       </div>
     );

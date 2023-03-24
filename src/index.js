@@ -11,7 +11,7 @@ root.render(
     {window.innerWidth < 768 && window.innerHeight < 1020 ?
     "Va te faire avec ton pc de merde"
     :
-    <NbaRankings />
+    <App />
     }
   </React.StrictMode>
 );
