@@ -35,7 +35,7 @@ async function getTeamsPPG() {
     teamsInfo.push(teamInfo);
   }
 
-  return teamsInfo.sort((a, b) => a.ppg - b.ppg);
+  return teamsInfo;
 }
 
 export default getTeamsPPG;
